@@ -121,15 +121,3 @@ jobs:
           echo $'```\r\n' >> release-notes.md
           cat ./guix/channels.scm >> release-notes.md
           echo $'\r\n```' >> release-notes.md
-
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          name: Guix Installer - ${{ env.RELEASE_TAG }}
-          tag_name: v${{ env.RELEASE_TAG }}
-          body_path: release-notes.md
-          fail_on_unmatched_files: true
-          files: guix-installer-${{ env.RELEASE_TAG }}.iso.zst
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: SystemCrafters/guix-installer
